@@ -9,14 +9,14 @@ import java.util.Objects;
  * Find files with extension .mp3 and add them to list.
  */
 public class FileSearcher {
-    private List<File> listWithFoundedMp3 = new ArrayList<>();
+    private final List<File> listWithFoundedMp3 = new ArrayList<>();
 
     public List<File> getListWithFoundedMp3() {
         return listWithFoundedMp3;
     }
 
     /**
-     *recursion method find files in folder and subfolder.
+     * recursion method find files in folder and subfolder.
      */
     public void findMp3(String[] paths) {
         List<File> directories = new ArrayList<>();

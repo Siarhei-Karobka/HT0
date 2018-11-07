@@ -7,6 +7,9 @@ import java.util.TreeSet;
  * This method should create Html file with mp3.
  */
 public class CreatorHTML {
+
+    private final String HTML_OUT_PATH = "D:\\mp3List.html";
+
     public StringBuilder buildHTMLTable(TreeSet<Mp3File> listWithMp3) {
         StringBuilder sb = new StringBuilder();
 
@@ -20,12 +23,6 @@ public class CreatorHTML {
             String title = (mp3File.getTitle() != null) ? mp3File.getTitle() : "Unknown Song";
             String duration = mp3File.getDuration();
             String localPath = mp3File.getPath();
-
-//            if (Objects.equals(artist, mp3File.getArtist())){
-//                sb.append("<td>").append(album).append("</td>").
-//                        append("<td>").append(title).append("</td></tr>");
-//            }
-//
 
             sb.append("<tr><td>").append(artist).append("</td>").
                     append("<td>").append(album).append("</td>").
@@ -41,7 +38,7 @@ public class CreatorHTML {
     }
 
     public void createHTMLFile(String mp3) {
-        File file = new File("D:\\mp3List.html");
+        File file = new File(HTML_OUT_PATH);
         FileWriter writer = null;
 
         try {
