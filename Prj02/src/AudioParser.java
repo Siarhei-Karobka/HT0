@@ -12,18 +12,19 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Method takes .mp3 tags and set them as Mp3 object parameters.
  */
 public class AudioParser {
 
-    public ArrayList<Mp3File> createListWithMp3(ArrayList<Mp3File> list, ArrayList<String> mp3LocationList) {
-        for (String fileLocation : mp3LocationList) {
+    public ArrayList<Mp3File> createListWithMp3(ArrayList<Mp3File> list, List<File> mp3LocationList) {
+        for (File fileLocation : mp3LocationList) {
             try {
                 Mp3File mp3File = new Mp3File();
 
-                InputStream input = new FileInputStream(new File(fileLocation));
+                InputStream input = new FileInputStream(new File(String.valueOf(fileLocation)));
                 ContentHandler handler = new DefaultHandler();
                 Metadata metadata = new Metadata();
                 Parser parser = new Mp3Parser();
