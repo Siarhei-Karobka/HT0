@@ -1,11 +1,26 @@
+import java.util.Comparator;
+
 /**
  * Class of mp3 file parameters.
  */
-public class Mp3File {
+public class Mp3File{
     private String Artist;
     private String Album;
     private String Title;
     private String durationInMillis;
+    private String path;
+
+    public String getPath() {
+        return "file:///" + path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getDuration() {
+        return  convertLongDurationFromSeconds(durationInMillis);
+    }
 
     public String getArtist() {
         return Artist;
@@ -51,5 +66,26 @@ public class Mp3File {
                 ", Title='" + Title + '\'' +
                 ", duration='" + convertLongDurationFromSeconds(durationInMillis) + '\'' +
                 '}';
+    }
+}
+
+class Mp3ArtistComparator implements Comparator<Mp3File>{
+    @Override
+    public int compare(Mp3File o1, Mp3File o2) {
+        return o1.getArtist().compareTo(o2.getArtist());
+    }
+}
+
+class Mp3AlbumComparator implements Comparator<Mp3File>{
+    @Override
+    public int compare(Mp3File o1, Mp3File o2) {
+        return o1.getAlbum().compareTo(o2.getAlbum());
+    }
+}
+
+class Mp3TitleComparator implements Comparator<Mp3File>{
+    @Override
+    public int compare(Mp3File o1, Mp3File o2) {
+        return o1.getTitle().compareTo(o2.getTitle());
     }
 }

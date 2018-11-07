@@ -13,13 +13,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Method takes .mp3 tags and set them as Mp3 object parameters.
  */
 public class AudioParser {
 
-    public ArrayList<Mp3File> createListWithMp3(ArrayList<Mp3File> list, List<File> mp3LocationList) {
+    public TreeSet<Mp3File> createListWithMp3(TreeSet<Mp3File> list, List<File> mp3LocationList) {
         for (File fileLocation : mp3LocationList) {
             try {
                 Mp3File mp3File = new Mp3File();
@@ -36,6 +37,7 @@ public class AudioParser {
                 mp3File.setArtist(metadata.get("xmpDM:artist"));
                 mp3File.setAlbum(metadata.get("xmpDM:album"));
                 mp3File.setDurationInMillis(metadata.get("xmpDM:duration"));
+                mp3File.setPath(fileLocation.getAbsolutePath());
 
                 list.add(mp3File);
 
