@@ -2,12 +2,13 @@ import furniture.FurnitureObject;
 import light.LightBulb;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * @author OK
  * @since 22.10.2018
  */
-public class Room {
+public class Room extends Building{
     private final int WINDOW_ILLUMINANCE = 700;
 
     private final String roomName;
